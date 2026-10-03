@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0f171e; color: #edf4fb; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+body > canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
+header, .card, footer, #labels { position: fixed; z-index: 1; pointer-events: none; }
+header { top: 26px; left: 32px; padding: 16px 20px; background: #101923df; border-left: 3px solid #87e0b4; }
+.eyebrow { color: #a7b8cb; font-size: 12px; letter-spacing: 2px; margin-bottom: 7px; }
+.headline { font-size: 25px; font-weight: 800; letter-spacing: 1px; }
+#live { font-size: 11px; vertical-align: middle; background: #215744; color: #afffe0; padding: 6px 8px; margin-left: 10px; }
+#round { margin-top: 9px; color: #c5d2df; font-size: 13px; }
+.card { bottom: 66px; width: 290px; padding: 17px 20px; background: #101923ed; border-top: 4px solid; }
+.red { left: 32px; border-color: #ff635e; }
+.blue { right: 32px; border-color: #55b9ff; }
+h2 { margin: 0 0 12px; font-size: 22px; }
+.red h2 { color: #ff8e89; } .blue h2 { color: #87d2ff; }
+.health { height: 10px; background: #334151; margin-bottom: 11px; }
+.health i { display: block; width: 100%; height: 100%; transition: width 90ms linear; }
+.red .health i { background: #ff635e; } .blue .health i { background: #55b9ff; }
+.metrics { font-size: 13px; line-height: 1.6; color: #d8e2ed; white-space: pre; }
+.action { color: #99aabc; font-size: 12px; margin-top: 7px; }
+footer { inset: auto 0 0; padding: 16px 32px; background: #101923e8; display: flex; justify-content: space-between; font-size: 12px; color: #b8c7d8; }
+#labels { inset: 0; }
+.label { position: absolute; text-align: center; transform: translate(-50%, -100%); background: #101923e0; border-bottom: 3px solid; padding: 5px 8px; font-size: 12px; font-weight: 700; white-space: nowrap; }

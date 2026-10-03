@@ -1,0 +1,9 @@
+{
+  "repo_id": "lingiyiyi/mcrl-red-dqn",
+  "revision": "5932b87ec75f6607617809d0478a4bd54a71f06d",
+  "files": {
+    "config.json": "2a45e2f98bfc10a22845555d4842bac65ac15192e59f8098231c0d3ffcbe5fa7",
+    "red.safetensors": "35b3f70d04d71d4044154b0a74f855b7c8af8366f7c3edac39596382632dcacb",
+    "aim.safetensors": "5a11ab281875bc66892a6fdd719d3a883dfb3e90f02d7ac29652ef53accafb5e"
+  }
+}

@@ -1,0 +1,12 @@
+.venv/
+node_modules/
+server/
+runs/
+models/
+__pycache__/
+.pytest_cache/
+.DS_Store
+.env
+*.log
+*.mp4
+*.pt

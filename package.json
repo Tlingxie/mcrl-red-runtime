@@ -1,0 +1,20 @@
+{
+  "name": "mcrl-red-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Run a pretrained RedDQN Minecraft PvP opponent; inference only",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "setup:server": "node scripts/setup-server.mjs",
+    "download:model": ".venv/bin/python -m mcrl.download",
+    "start": "node scripts/run.mjs",
+    "play": "node scripts/run.mjs",
+    "stop": "node scripts/run.mjs --stop",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "mineflayer": "4.39.0",
+    "prismarine-viewer": "1.33.0",
+    "rcon-client": "4.2.5"
+  }
+}
