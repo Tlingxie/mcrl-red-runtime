@@ -23,7 +23,7 @@ async function main() {
   let active = false; let ready = false; let startRequested = false; let resetting = false
   let terminal = null; let phase = 'human_waiting'; let episode = 0; let startedAt = 0; let endedAt = 0
   let humanOnline = false; let human = null; let previousPosition = null; let previousTime = 0
-  let busy = false; let closing = false; let hasSpawned = false; let action = 13; let botHealth = 20
+  let busy = false; let closing = false; let action = 13; let botHealth = 20
   const fresh = () => ({ hits: 0, dealt: 0, taken: 0, swings: 0, lastAttack: 0, lastHurt: 0 })
   let stats = [fresh(), fresh()]
   const command = text => rcon.send(text)
@@ -56,7 +56,8 @@ async function main() {
   })
   bot.on('playerLeft', player => { if (player.username === humanName) { humanOnline = false; ready = false; finish('disconnect', 1) } })
   bot.on('entityDead', entity => { if (entity.id === target()?.id && active) finish('death', 1) })
-  bot.on('death', () => { if (!hasSpawned) bot.respawn(); else if (active) finish('death', 0) })
+  // A dead client stops seeing player entities, so respawn cannot wait for prepare().
+  bot.on('death', () => { if (active) finish('death', 0); bot.respawn() })
   bot.on('error', error => console.error(error))
   bot.on('end', () => { if (!closing) { console.error('Human fighter disconnected'); process.exit(1) } })
   await new Promise((resolve, reject) => {
@@ -64,7 +65,6 @@ async function main() {
     bot.once('spawn', () => { clearTimeout(timer); resolve() })
     bot.once('error', reject)
   })
-  hasSpawned = true
 
   async function syncHuman() {
     const entity = target()
