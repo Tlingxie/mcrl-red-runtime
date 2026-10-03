@@ -135,6 +135,12 @@ async function main() {
         await command(`title ${humanName} actionbar ${JSON.stringify({ text: `空手对战 ${count}`, color: 'yellow' })}`)
         await sleep(1000)
       }
+      // Reset countdown knockback so both fighters start at the intended gap.
+      bot.physicsEnabled = false
+      await command('tp RedDQN -2 64 0 -90 0')
+      await command(`tp ${humanName} 2 64 0 90 0`)
+      await sleep(200)
+      bot.physicsEnabled = true
       for (const name of ['RedDQN', humanName]) {
         await command(`effect give ${name} minecraft:instant_health 1 10 true`)
         await command(`effect give ${name} minecraft:saturation 1 10 true`)
@@ -146,7 +152,7 @@ async function main() {
       phase = 'human_pvp'; active = true
       await command(`title ${humanName} actionbar ${JSON.stringify({ text: '开始！', color: 'red' })}`)
       return state()
-    } finally { resetting = false }
+    } finally { resetting = false; bot.physicsEnabled = true }
   }
   async function step(data) {
     await syncHuman()
